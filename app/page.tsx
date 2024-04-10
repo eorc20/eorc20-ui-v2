@@ -32,7 +32,7 @@ export default async function Component() {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '15px' }}>
       {data.data.map((row) => (
-        <Card>
+        <Card key={row.id}>
           <CardHeader className="pb-2">
             <CardDescription>{row.op}</CardDescription>
             <CardTitle className="text-4xl">{row.tick}</CardTitle>
@@ -46,10 +46,10 @@ export default async function Component() {
             </div>
             <div className="text-xs text-gray-400">{formatDistanceToNow(new Date(row.timestamp), { addSuffix: true })}</div>
           </CardContent>
+          <CardFooter>
+          </CardFooter>
         </Card>
       ))}
     </div>
   )
 }
-
-

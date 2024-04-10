@@ -2,6 +2,7 @@ import { formatToThousands } from "@/utils/formatBalance";
 import { ColumnDef } from "@tanstack/react-table"
 import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export type GetSupply = {
   tick:                string;
@@ -24,6 +25,10 @@ export const columns: ColumnDef<GetSupply>[] = [
   {
     accessorKey: "tick",
     header: "Tick",
+    cell: ({ row }) => {
+      const tick = String(row.getValue("tick"));
+      return <div className="text-left text-2xl font-bold">{tick} <Badge className="ml-1" variant="outline">{row.original.protocol}</Badge></div>
+    },
   },
   {
     accessorKey: "deploy_timestamp",
