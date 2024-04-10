@@ -22,7 +22,7 @@ interface Inscription {
 }
 
 async function getData(): Promise<{data: Inscription[]}> {
-  const response = await fetch("https://api.eorc20.io/inscription");
+  const response = await fetch("https://api.eorc20.io/inscription?limit=50");
   return response.json();
 }
 
